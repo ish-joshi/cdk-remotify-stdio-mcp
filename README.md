@@ -7,6 +7,15 @@ The flexible CDK construct allows you to deploy a remote MCP server that can be 
 Simply specify the mcp command to run and the construct will spin up the necessary infrastructure to host it.
 
 
+## Usage
+```typescript
+import { RemotifyStdioSseMcp } from './remotify-stdio-sse-mcp';
+
+const remoteTimeMCP = new RemotifyStdioSseMcp(this, 'RemoteTimeMCP', {
+    mcpCommand: 'uvx mcp-server-time --local-timezone=Australia/Melbourne'
+});
+```
+
 
 
 ## Architecture
@@ -20,9 +29,12 @@ If no infrastructure is specified, the construct will create a new VPC, ECS clus
 * VPC: If you have an existing VPC, you can pass it to the construct to deploy the service within that VPC.
 * Cluster: If you have an existing ECS cluster, you can pass it to the construct to deploy the service in that cluster.
 
+
 ```typescript
-vpc?: IVpc;
-cluster?: Cluster;
+interface RemotifyStdioSseMcpProps {
+    vpc?: IVpc;
+    cluster?: Cluster;
+}
 ```
 
 
