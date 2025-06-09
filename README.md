@@ -13,6 +13,19 @@ Simply specify the mcp command to run and the construct will spin up the necessa
 Currently the construct deploys a ECSFargate service with a load balancer in front of it. The service runs a Docker container that executes the specified MCP command and serves the output over SSE.
 
 
+### Injecting Existing Resources
+
+If no infrastructure is specified, the construct will create a new VPC, ECS cluster, and load balancer. However, you can also inject existing resources to avoid creating new ones.
+
+* VPC: If you have an existing VPC, you can pass it to the construct to deploy the service within that VPC.
+* Cluster: If you have an existing ECS cluster, you can pass it to the construct to deploy the service in that cluster.
+
+```typescript
+vpc?: IVpc;
+cluster?: Cluster;
+```
+
+
 ### Next steps
 - Add support for more transports (e.g. WebSocket)
 - Add support for Streamable HTTP
