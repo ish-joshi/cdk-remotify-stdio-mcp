@@ -1,8 +1,26 @@
-# Welcome to your CDK TypeScript project
+# Remotify MCP 
 
-This is a blank project for CDK development with TypeScript.
+Easily convert local (STDIO transport) MCP servers to remote (sse for now) transport.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+The flexible CDK construct allows you to deploy a remote MCP server that can be used by any MCP client supporting SSE (Server-Sent Events).
+
+Simply specify the mcp command to run and the construct will spin up the necessary infrastructure to host it.
+
+
+
+
+## Architecture
+Currently the construct deploys a ECSFargate service with a load balancer in front of it. The service runs a Docker container that executes the specified MCP command and serves the output over SSE.
+
+
+### Next steps
+- Add support for more transports (e.g. WebSocket)
+- Add support for Streamable HTTP
+- Support hosting via Lambda (for simple commands) - this would allow for a more cost-effective solution for low-traffic commands.
+- Provide a way to easily get HTTP(S) URLs for the deployed services (probably via hosting in API Gateway)
+
+
+
 
 ## Useful commands
 

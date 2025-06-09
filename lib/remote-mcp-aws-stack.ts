@@ -1,16 +1,20 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { RemotifyStdioSseMcp } from './remotify-stdio-sse-mcp';
 
 export class RemoteMcpAwsStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const remoteTimeMCP = new RemotifyStdioSseMcp(this, 'RemoteTimeMCP', {
+      mcpCommand: 'uvx mcp-server-time --local-timezone=Australia/Melbourne',
+      includeHealthCheck: true,
+    });
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'RemoteMcpAwsQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new cdk.CfnOutput(this, 'RemoteTimeMCPUrl', {
+      value: remoteTimeMCP.service.loadBalancer.loadBalancerDnsName,
+      description: 'The URL of the Remote Time MCP service',
+    });
+
   }
 }
