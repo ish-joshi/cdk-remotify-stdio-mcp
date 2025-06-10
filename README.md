@@ -9,9 +9,9 @@ Simply specify the mcp command to run and the construct will spin up the necessa
 
 ## Usage
 ```typescript
-import { RemotifyStdioSseMcp } from './remotify-stdio-sse-mcp';
+import { RemoteSTDIOMCP } from './remote-stdio-mcp';
 
-const remoteTimeMCP = new RemotifyStdioSseMcp(this, 'RemoteTimeMCP', {
+const remoteTimeMCP = new RemoteSTDIOMCP(this, 'RemoteTimeMCP', {
     mcpCommand: 'uvx mcp-server-time --local-timezone=Australia/Melbourne'
 });
 ```
@@ -31,7 +31,7 @@ If no infrastructure is specified, the construct will create a new VPC, ECS clus
 
 
 ```typescript
-interface RemotifyStdioSseMcpProps {
+interface RemoteSTDIOMCPProps {
     vpc?: IVpc;
     cluster?: Cluster;
 }

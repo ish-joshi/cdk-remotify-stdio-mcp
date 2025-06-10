@@ -4,7 +4,7 @@ import { ApplicationLoadBalancedFargateService, ApplicationLoadBalancedFargateSe
 import { Secret as SMSecret } from "aws-cdk-lib/aws-secretsmanager";
 import { Construct } from "constructs";
 
-export interface RemotifyStdioSseMcpProps {
+export interface RemoteSTDIOMCPProps {
     mcpCommand: string;
     includeHealthCheck?: boolean;
     secrets?: { [key: string]: string | SMSecret };
@@ -13,7 +13,7 @@ export interface RemotifyStdioSseMcpProps {
     dockerImage?: string;
 }
 
-export class RemotifyStdioSseMcp extends Construct {
+export class RemoteSTDIOMCP extends Construct {
 
     public readonly service: ApplicationLoadBalancedFargateService;
     public readonly localDockerRunCommand: string;

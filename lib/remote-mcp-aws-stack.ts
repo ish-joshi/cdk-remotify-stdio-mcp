@@ -1,12 +1,12 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { RemotifyStdioSseMcp } from './remotify-stdio-sse-mcp';
+import { RemoteSTDIOMCP } from './remote-stdio-mcp';
 
 export class RemoteMcpAwsStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const remoteTimeMCP = new RemotifyStdioSseMcp(this, 'RemoteTimeMCP', {
+    const remoteTimeMCP = new RemoteSTDIOMCP(this, 'RemoteTimeMCP', {
       mcpCommand: 'uvx mcp-server-time --local-timezone=Australia/Melbourne',
       includeHealthCheck: true,
     });
