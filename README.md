@@ -6,6 +6,8 @@ The flexible CDK construct allows you to deploy a remote MCP server that can be 
 
 Simply specify the mcp command to run and the construct will spin up the necessary infrastructure to host it.
 
+Video [demo](https://www.youtube.com/watch?v=Bckd5MA_1pI) for usage in MCP clients
+
 
 ## Usage
 ```typescript
